@@ -4,7 +4,6 @@ mongoose.connect('mongodb://localhost:27017/myapp', { useNewUrlParser: true, use
     .then(() => console.log('Connected to mongodb..'))
     .catch( e => console.log('Could not connected to mongodb ', e));
 
-//Created Schema 
 const courseSchema = new mongoose.Schema({
     name: String,
     author: String,
@@ -13,15 +12,18 @@ const courseSchema = new mongoose.Schema({
     isPublished: Boolean
 });
 
-//created model
- const Course = mongoose.model('Course', courseSchema);
- const course = new Course ({
+async function createCourse(){
+    const Course = mongoose.model('Course', courseSchema);
+    const course = new Course ({
      name: 'NODE.J course',
      author: 'Kishan',
      tag: ['front', 'backend'],
      isPublished: true
  });
 
- //save data into mongodb
   const result = await course.save();
   console.log(result);
+
+}
+    createCourse();
+ 
