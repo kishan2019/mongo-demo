@@ -22,4 +22,6 @@ const courseSchema = new mongoose.Schema({
      isPublished: true
  });
 
- 
+ //save data into mongodb
+  const result = await course.save();
+  console.log(result);
